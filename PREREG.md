@@ -155,9 +155,9 @@ On these estimates the 6-document plan is near the top of the 1–2 day budget, 
 
 ## Prediction (author writes this before anything runs)
 
-**What do you expect to happen?** (written by the author, 2026-10-25; the last sentence added the same day, before anything ran)
+**What do you expect to happen?** (written by the author, 2026-10-25. The same day, before anything ran, the author added the last sentence and reworded the reason; the first wording is in this repository's history, commit 8d6a3d0.)
 
-I expect q8_0 to lose about 2 points at 48k on Glimmer and about 6 points on Gemma 4 because Glimmer's sliding-window and grouped query attention architecture bounds long context cache drift far more effectively than Gemma 4's quantization sensitive attention layers. I expect compressing V to be better than compressing K.
+I expect q8_0 to lose about 2 points at 48k on Glimmer and about 6 points on Gemma 4 because Gemma 4's global attention layers use very large heads, and earlier divergence measurements found its cache far more sensitive to quantization than other models'. I expect compressing V to be better than compressing K.
 
 **What result would prove you wrong?** (written by the author, 2026-10-25)
 
