@@ -1,0 +1,7 @@
+# Patterns kept OUT of the public test repo (github.com/heldoutlab/...). Copy this file as .gitignore when exporting.
+# Inside the private ai-claims repo these files ARE committed, so the private set is backed up.
+# Private held-out set: never published. Only its sha256 goes into PREREG.md.
+private_theme.py
+tasks/private.jsonl
+results/*/private/
+__pycache__/

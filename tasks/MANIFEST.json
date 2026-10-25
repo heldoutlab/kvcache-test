@@ -1,0 +1,26 @@
+{
+  "contexts": {
+    "16k": 15000,
+    "48k": 46000,
+    "4k": 3600
+  },
+  "cpt": 3.15,
+  "files": {
+    "calibration.jsonl": {
+      "documents": 3,
+      "questions": 18,
+      "sha256": "e8f928f44b0a2acddd3517760b25418fdd9783c85ae5b8ea6170c62bd43f60c8"
+    },
+    "private.jsonl": {
+      "documents": 18,
+      "questions": 144,
+      "sha256": "5d4a3f455bbb0a32a033ea6c5279c71cc875c1626728e5a9bdb7e90e56e711a6"
+    },
+    "public.jsonl": {
+      "documents": 18,
+      "questions": 144,
+      "sha256": "7d7274f658054674c0a1347a2918999c6333465cc8b832d9a9ea23e88df248d1"
+    }
+  },
+  "generator": "kvcache-gen 1.0 (2026-10-22)"
+}

@@ -2,7 +2,7 @@
 
 Pre-registered test by [Held Out Lab](https://heldoutlab.substack.com): independent tests of AI model claims, with the rules fixed before the run.
 
-**Status: pre-registered, not yet run.** [`PREREG.md`](PREREG.md) holds the claim, the pass/fail rule, the author's prediction and the settings, pushed before any model ran. The task files, harness and their hashes are added at the freeze (after a calibration pilot, before the main run); results, raw outputs and the write-up follow.
+**Status: frozen 2026-10-25, main run in progress.** [`PREREG.md`](PREREG.md) holds the claim, the pass/fail rule, the author's prediction (pushed before any model ran), the pilot log and the sha256 of every task and harness file. Public tasks are in `tasks/`, the harness in `harness/`. The private held-out set is not published; only its hash is. Results, raw outputs and the write-up follow.
 
 - **Claim:** "q8_0 KV cache is free; if you must go lower, quantize V to q4_0 but leave K alone."
 - **Models:** Muse Glimmer 30B and Gemma 4 26B-A4B, Q4_K_M, stock llama.cpp, on a 32 GB M1 Pro MacBook.

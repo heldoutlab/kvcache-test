@@ -42,7 +42,7 @@ Read from the source at that commit in a local clone (`~/dev/company/llama.cpp-f
 - Fits easily. Analytic KV cache at `-c 65536` (`harness/config.py: kv_bytes`): f16/f16 930 MiB, q8_0/q8_0 494 MiB, mixed 378 MiB, q4_0/q4_0 261 MiB. **For this model, q8_0 saves only about 0.44 GB.** People quantize the KV cache to save memory, and that motive is weak here. The post must say so.
 - Same file and binary as the Bonsai round-2 calibration (results there: 55–60 tok/s prefill, 5.4–6.1 tok/s decode on short prompts, M1 Pro).
 
-**Second model (author's decision, 2026-10-25): Gemma 4 26B-A4B**, the most KV-sensitive model in the localbench test. File `unsloth/gemma-4-26B-A4B-it-GGUF` / `gemma-4-26B-A4B-it-UD-Q4_K_M.gguf` (16.95 GB, sha256 f2c28b3d…3f293f). Arms A and B only (part 1 of the rule); thinking off (the card's default); card sampler temperature 1.0, top_p 0.95, top_k 64. Arms C and D are run on Gemma only if the time rule leaves room, as a descriptive addition.
+**Second model (author's decision, 2026-10-25): Gemma 4 26B-A4B**, the most KV-sensitive model in the localbench test. File `unsloth/gemma-4-26B-A4B-it-GGUF` / `gemma-4-26B-A4B-it-UD-Q4_K_M.gguf` (16.95 GB, sha256 f2c28b3d…3f293f). Arms A and B only (part 1 of the rule); thinking off (the card's default, passed explicitly as `enable_thinking: false` because llama-server defaults to on); output cap 8,192 (pilot); card sampler temperature 1.0, top_p 0.95, top_k 64. Arms C and D are run on Gemma only if the time rule leaves room, as a descriptive addition.
 
 ## Arms (one server start per arm; everything else identical)
 | Arm | `-ctk` | `-ctv` | Role |
@@ -92,6 +92,18 @@ The private template and seed live in `private_theme.py` (git-ignored). `python3
 4. **Time rule:** project the machine hours for A–D plus the noise run. ≤ 40 h: 6 documents per context. 40–60 h: the first 4 documents per context, for every arm (`queue.sh 4`). Above 60 h at 4 documents: stop, and the author redesigns before freezing.
 5. Freeze: record the hashes below and push.
 
+**Pilot log (Glimmer)**
+- 2026-10-25, step 1: the first preflight measured 3.153 characters per token, so all 39 prompts were too long (48k prompts about 57.5k tokens). All sets were regenerated once with `--cpt 3.15`, and `gen_tasks.py --check --cpt 3.15` printed OK. On the second preflight, all 36 public and private prompts were inside 0.80–1.00 × nominal. The 3 calibration prompts were 1.4%, 3.6% and 5.9% over nominal (4,153 / 16,973 / 52,030 tokens), because their theme tokenizes worse (2.8 characters per token). The rule allows one regeneration, so they were left as they are. They are used only for the difficulty band and timing, where a longer prompt makes the time estimate conservative. All of them fit the 65,536-token server context.
+- 2026-10-25, step 2: arm A scored 15 of 18 (83%) on the calibration questions, inside the 40–90% band, so difficulty was not changed. No answer reached the 4,096-token cap (longest 1,314). Wall time was 45 min for the 3 calibration documents. Prefill ran at 56–62 tok/s and decode at 5.5–6.1 tok/s.
+- 2026-10-25, step 3 (timing, calibration documents, Glimmer). The CPU-attention fallback for mixed K/V types is **confirmed**. Arm B (q8_0/q8_0) at 16k ran at the same speed as A (prefill 59 tok/s, decode 5.5 tok/s; 346 s for the first question). Arm D (K q4 / V q8) at 16k: prefill 18 tok/s, decode 2.5–3.0 tok/s, 1,010 s for the first question. Arm C (K q8 / V q4) at 16k: prefill 21 tok/s, decode 3.0 tok/s, 897 s. At 48k: prefill 11 tok/s, decode 1.9 tok/s, and 4,763 s (79 min) for the first question. Calibration correctness for these arms is not part of any analysis.
+- 2026-10-25, Gemma 4 preflight: Gemma's tokenizer gives 2.65–2.75 characters per token on these documents (calibration theme 2.37). All public and private prompts are 4–11% over nominal on Gemma (4k ≈ 4.3k, 16k ≈ 17.8k, 48k ≈ 54.5k tokens). Decision: **the same documents are kept for both models, and nothing is regenerated.** The q8_0 comparison is within each model, on identical documents, so a longer real prompt makes the test harder for the claim, not easier. The 0.80–1.00 band was written before Gemma was added. The analysis reports each model's real token counts next to the nominal labels. Every prompt fits the 65,536-token context with the 4,096-token output cap (largest public prompt 54,701 tokens).
+- 2026-10-25, Gemma 4 step 2, first attempt (set aside): llama-server turns thinking on by default, and Gemma's chat template follows that flag. So the first Gemma calibration ran **with thinking on**, against this document's "thinking off". It scored 8 of 18, with 7 replies cut off at 4,096 tokens while still reasoning (0 of 6 at 48k). Those records are kept in `results/gemma4/pilot_thinking_on/` and are not used. Fix: Gemma now sends `chat_template_kwargs: {"enable_thinking": false}` explicitly (`config.py`). The first replies after the fix have empty reasoning.
+- 2026-10-25, Gemma 4 step 2, thinking off: arm A scored 9 of 18 (50%): 5 of 6 at 4k, 3 of 6 at 16k, **0 of 6 at 48k** (calibration 48k is 61,384 tokens on Gemma). The 48k answers are confident and wrong (wrong tags, wrong totals, the wrong person), not refusals. 1 of 18 replies hit the 4,096 cap (a repeating list of names), which is 5.6%, above the 5% trigger, so **Gemma's output cap is raised to 8,192** (`MODELS["gemma4"]["max_tokens"]`). Glimmer had 0 of 18 at the cap and keeps 4,096. The difficulty band is not applied to Gemma: tasks were already regenerated once, and both models must see the same documents.
+- 2026-10-25, Gemma 4 timing (arm B, calibration 16k and 48k): prefill is the same as A (≈181 tok/s at 16k, ≈82 at 48k), but **decode is slower under q8_0**: 17 vs 27 tok/s at 16k and 10 vs 20 tok/s at 48k. Reported as a speed result.
+- 2026-10-25, **floor safeguard (added before freezing, because of Gemma's 0 of 6 at 48k)**: a context where arm A scores below 25% on the public main run cannot show a 10-point loss and must not count as "no loss found". Such a context is reported in full but left out of the verdict for that model (both parts, and the pooled figures used by the rule). If every context is below the floor, the verdict is "NOT TESTABLE". `config.FLOOR_ACC = 25.0`; `analyze.py` lists `floor_contexts` and `contexts_used`. It applies to both models alike and was set before any model saw a public or private question. Consequence, stated now: if Gemma's 48k is below the floor, the author's "about 6 points on Gemma at 48k" prediction is scored as not testable, not as right or wrong.
+- 2026-10-25, analysis fix: `analyze.py` printed a verdict only when arms C and D existed, so Gemma (A and B only) would have had none. Part 1 is now computed whenever A and B exist; part 2 says "NOT TESTED" for a model without C and D. Selftest updated and passes.
+- 2026-10-25, **step 4, time rule**. Measured seconds per document (first question, which includes prefill, plus 7 follow-ups at the calibration mean). Glimmer: A 486 / 879 / 1,874 s (4k / 16k / 48k); B ≈ 1.09 × A (measured 962 s at 16k); C 1,095 / 1,982 / 7,815 s (4k scaled); D 1,464 / 2,648 / 10,441 s (4k and 48k scaled from 16k). Per set of three documents: A 0.9 h, B 1.0 h, C 3.0 h, D 4.0 h. Projection for A–D plus noise: **55 h at 6 documents per context, 37 h at 4**. 55 h falls in the 40–60 h band, so **the first 4 documents per context are used for every arm and both models** (`queue.sh 4`). Gemma A + B at 4 documents ≈ 4–5 h more. Expected total ≈ 41–42 h.
+
 ## Scoring and analysis (`harness/analyze.py`)
 - Accuracy by arm × context, by family, and by needle depth (descriptive).
 - **Paired differences vs arm A** (A−B, A−C, A−D, A−E) and **C−D**, per context and pooled. 95% intervals come from a stratified cluster bootstrap (resample whole documents within each context, 10,000 draws), because the 8 questions on one document are correlated. Discordant counts (A right/X wrong, and the reverse) are reported too.
@@ -117,7 +129,7 @@ The private template and seed live in `private_theme.py` (git-ignored). `python3
 - Part 1: "NOT FREE" if the pooled loss is ≥ 5 with the interval excluding 0, or the 48k loss is ≥ 10 with the interval excluding 0. "FREE WITHIN 5 POINTS" if the whole pooled 95% interval lies inside [−5, +5]. Otherwise "NOT RESOLVED".
 - Part 2: "SUPPORTED" if g ≥ 5, the interval excludes 0, and C's pooled loss vs A is ≤ 5. "CONTRADICTED" if g ≤ −5 and the interval excludes 0. Otherwise "NOT RESOLVED".
 
-Whichever is chosen: the 48k column is the one the claim is about, so it is reported first. Optional arms E and P are descriptive only.
+Whichever is chosen: the 48k column is the one the claim is about, so it is reported first. **Floor (pilot amendment, before freezing):** a context where arm A scores below 25% on the public main run is reported but left out of that model's verdict; see the pilot log. Optional arms E and P are descriptive only.
 
 ## Noise and sample size, in plain words
 - Each arm answers 144 public questions: 48 at each length, on 6 documents. With the 4-document fallback it is 96 (32 per length).
@@ -165,3 +177,18 @@ If q8_0 loses more than 8 points at 48k, or if the V-vs-K result goes the other 
 
 ## Frozen hashes
 
+Frozen 2026-10-25 01:53 UTC, after the pilot and before any model saw a public or private question. The main run is `nohup caffeinate -is ./queue.sh 4` (time rule: 4 documents per context). Glimmer runs A, B, C, D and the noise run, then Gemma runs A and B. A change to any file below after this point would be a dated amendment, pushed before the affected run.
+
+| File | sha256 |
+|---|---|
+| `tasks/public.jsonl` | `7d7274f658054674c0a1347a2918999c6333465cc8b832d9a9ea23e88df248d1` |
+| `tasks/calibration.jsonl` | `e8f928f44b0a2acddd3517760b25418fdd9783c85ae5b8ea6170c62bd43f60c8` |
+| `tasks/private.jsonl` (private, not published) | `5d4a3f455bbb0a32a033ea6c5279c71cc875c1626728e5a9bdb7e90e56e711a6` |
+| `tasks/MANIFEST.json` | `9d5b4f3b40d5c5bcacf2c4de150cb1751953b9fe1948d8084963cfc530084ec3` |
+| `gen_tasks.py` | `4d606bbebffdface4cca041f83d99680f5d907269af7e0120b0cfad511660e9d` |
+| `private_theme.py` (private, not published) | `7ae8bd54dce56f45b697da2a6e580fa128dcb3e5ac5608e324405b6fbd34e271` |
+| `harness/config.py` | `aa717682298bdd15395358465806975378d60398feacfe917faf54425e25a17b` |
+| `harness/run.py` | `05e7c31c6313e37f125fecea2ae609a2067e2c395e8b7418cbb0183b9b3abbdb` |
+| `harness/grade.py` | `fde27b377e1a07439b2d156f7d51cd1824a325697339757362d49faa4b3d564a` |
+| `harness/analyze.py` | `b3f1cf4dfb37777472fb15416f802462aa9f7e8092907762cfe93fbf3ca7b05f` |
+| `queue.sh` | `06ec7fb612c61ba081d18d26586c3800e8f0411997508527cd142f6fd5ec190b` |
