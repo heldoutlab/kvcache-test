@@ -1,0 +1,19 @@
+glimmer A calibration/calibration: 18 questions, 0 already done
+[1/18] cal-4k-00-R0 correct=True gen=283 prompt_n=4154 pp=59.6 t/s tg=5.9 t/s 118s
+[2/18] cal-4k-00-M31 correct=True gen=137 prompt_n=52 pp=38.7 t/s tg=5.8 t/s 25s
+[3/18] cal-4k-00-AS2 correct=True gen=413 prompt_n=51 pp=37.3 t/s tg=5.9 t/s 71s
+[4/18] cal-4k-00-L3 correct=True gen=375 prompt_n=56 pp=41.4 t/s tg=6.0 t/s 63s
+[5/18] cal-4k-00-M24 correct=True gen=148 prompt_n=44 pp=33.8 t/s tg=6.1 t/s 26s
+[6/18] cal-4k-00-AC5 correct=True gen=465 prompt_n=49 pp=37.3 t/s tg=6.1 t/s 78s
+[7/18] cal-16k-00-R0 correct=True gen=216 prompt_n=16936 pp=61.6 t/s tg=5.9 t/s 312s
+[8/18] cal-16k-00-M31 correct=True gen=137 prompt_n=52 pp=36.6 t/s tg=5.9 t/s 24s
+[9/18] cal-16k-00-AS2 correct=True gen=821 prompt_n=50 pp=36.1 t/s tg=5.9 t/s 140s
+[10/18] cal-16k-00-L3 correct=True gen=369 prompt_n=57 pp=38.7 t/s tg=5.9 t/s 64s
+[11/18] cal-16k-00-M24 correct=True gen=205 prompt_n=45 pp=32.1 t/s tg=5.9 t/s 36s
+[12/18] cal-16k-00-AC5 correct=False gen=830 prompt_n=50 pp=35.5 t/s tg=5.9 t/s 141s
+[13/18] cal-48k-00-R0 correct=True gen=290 prompt_n=51993 pp=56.1 t/s tg=5.5 t/s 979s
+[14/18] cal-48k-00-M31 correct=True gen=539 prompt_n=52 pp=32.5 t/s tg=5.5 t/s 100s
+[15/18] cal-48k-00-AS2 correct=False gen=1314 prompt_n=52 pp=32.0 t/s tg=5.5 t/s 240s
+[16/18] cal-48k-00-L3 correct=True gen=414 prompt_n=57 pp=34.2 t/s tg=5.5 t/s 77s
+[17/18] cal-48k-00-M24 correct=True gen=182 prompt_n=45 pp=28.2 t/s tg=5.5 t/s 34s
+[18/18] cal-48k-00-AC5 correct=False gen=1029 prompt_n=50 pp=31.2 t/s tg=5.5 t/s 188s

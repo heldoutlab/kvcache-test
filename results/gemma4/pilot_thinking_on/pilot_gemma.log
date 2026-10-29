@@ -1,0 +1,29 @@
+=== gemma4 A calibration 2026-10-24T23:52:02Z
+gemma4 A calibration/calibration: 18 questions, 0 already done
+[1/18] cal-4k-00-R0 correct=True gen=605 prompt_n=4886 pp=306.1 t/s tg=30.2 t/s 36s
+[2/18] cal-4k-00-M31 correct=True gen=442 prompt_n=62 pp=89.6 t/s tg=30.4 t/s 15s
+[3/18] cal-4k-00-AS2 correct=True gen=3893 prompt_n=52 pp=108.7 t/s tg=30.2 t/s 130s
+[4/18] cal-4k-00-L3 correct=True gen=702 prompt_n=63 pp=81.8 t/s tg=30.7 t/s 24s
+[5/18] cal-4k-00-M24 correct=True gen=335 prompt_n=51 pp=91.2 t/s tg=31.3 t/s 11s
+[6/18] cal-4k-00-AC5 correct=True gen=2754 prompt_n=51 pp=103.3 t/s tg=30.2 t/s 92s
+[7/18] cal-16k-00-R0 correct=False gen=591 prompt_n=20040 pp=185.1 t/s tg=26.8 t/s 134s
+[8/18] cal-16k-00-M31 correct=True gen=476 prompt_n=62 pp=54.7 t/s tg=26.4 t/s 19s
+[9/18] cal-16k-00-AS2 correct=False gen=4096 prompt_n=56 pp=63.8 t/s tg=26.5 t/s 155s TRUNCATED
+[10/18] cal-16k-00-L3 correct=False gen=2273 prompt_n=66 pp=59.8 t/s tg=26.7 t/s 86s
+[11/18] cal-16k-00-M24 correct=True gen=310 prompt_n=54 pp=58.0 t/s tg=26.5 t/s 13s
+[12/18] cal-16k-00-AC5 correct=False gen=4096 prompt_n=50 pp=68.3 t/s tg=26.5 t/s 156s TRUNCATED
+[13/18] cal-48k-00-R0 correct=False gen=700 prompt_n=61380 pp=83.6 t/s tg=19.3 t/s 773s
+[14/18] cal-48k-00-M31 correct=False gen=4096 prompt_n=62 pp=30.5 t/s tg=19.5 t/s 213s TRUNCATED
+[15/18] cal-48k-00-AS2 correct=False gen=4096 prompt_n=56 pp=27.2 t/s tg=19.4 t/s 213s TRUNCATED
+[16/18] cal-48k-00-L3 correct=False gen=4096 prompt_n=66 pp=24.8 t/s tg=19.5 t/s 213s TRUNCATED
+[17/18] cal-48k-00-M24 correct=False gen=4096 prompt_n=54 pp=31.2 t/s tg=19.4 t/s 213s TRUNCATED
+[18/18] cal-48k-00-AC5 correct=False gen=4096 prompt_n=54 pp=32.0 t/s tg=19.5 t/s 212s TRUNCATED
+=== gemma4 B 16k 2026-10-25T00:37:25Z
+gemma4 B calibration/calibration: 6 questions, 0 already done
+[1/6] cal-16k-00-R0 correct=False gen=759 prompt_n=20065 pp=182.6 t/s tg=16.8 t/s 155s
+[2/6] cal-16k-00-M31 correct=True gen=701 prompt_n=62 pp=59.9 t/s tg=16.8 t/s 43s
+[3/6] cal-16k-00-AS2 correct=False gen=4096 prompt_n=56 pp=63.5 t/s tg=16.5 t/s 250s TRUNCATED
+[4/6] cal-16k-00-L3 correct=True gen=2314 prompt_n=66 pp=66.0 t/s tg=16.7 t/s 140s
+[5/6] cal-16k-00-M24 correct=True gen=454 prompt_n=54 pp=59.9 t/s tg=16.9 t/s 28s
+[6/6] cal-16k-00-AC5 correct=False gen=4096 prompt_n=50 pp=65.2 t/s tg=16.5 t/s 250s TRUNCATED
+=== done 2026-10-25T00:52:05Z

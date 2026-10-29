@@ -1,0 +1,35 @@
+=== gemma4 A calibration 2026-10-25T00:53:08Z
+gemma4 A calibration/calibration: 18 questions, 0 already done
+[1/18] cal-4k-00-R0 correct=True gen=172 prompt_n=4888 pp=307.8 t/s tg=28.8 t/s 22s
+[2/18] cal-4k-00-M31 correct=True gen=169 prompt_n=62 pp=72.8 t/s tg=28.9 t/s 7s
+[3/18] cal-4k-00-AS2 correct=False gen=340 prompt_n=56 pp=102.0 t/s tg=28.8 t/s 12s
+[4/18] cal-4k-00-L3 correct=True gen=223 prompt_n=66 pp=114.9 t/s tg=28.8 t/s 8s
+[5/18] cal-4k-00-M24 correct=True gen=197 prompt_n=54 pp=109.9 t/s tg=30.8 t/s 7s
+[6/18] cal-4k-00-AC5 correct=True gen=743 prompt_n=54 pp=111.7 t/s tg=31.3 t/s 24s
+[7/18] cal-16k-00-R0 correct=False gen=178 prompt_n=20044 pp=182.7 t/s tg=27.0 t/s 117s
+[8/18] cal-16k-00-M31 correct=True gen=386 prompt_n=62 pp=71.1 t/s tg=26.8 t/s 15s
+[9/18] cal-16k-00-AS2 correct=False gen=350 prompt_n=56 pp=68.2 t/s tg=27.0 t/s 14s
+[10/18] cal-16k-00-L3 correct=True gen=438 prompt_n=66 pp=78.4 t/s tg=26.8 t/s 17s
+[11/18] cal-16k-00-M24 correct=True gen=218 prompt_n=54 pp=70.6 t/s tg=27.3 t/s 9s
+[12/18] cal-16k-00-AC5 correct=False gen=440 prompt_n=54 pp=69.7 t/s tg=26.2 t/s 18s
+[13/18] cal-48k-00-R0 correct=False gen=200 prompt_n=61384 pp=82.8 t/s tg=19.7 t/s 753s
+[14/18] cal-48k-00-M31 correct=False gen=4096 prompt_n=62 pp=34.7 t/s tg=19.4 t/s 213s TRUNCATED
+[15/18] cal-48k-00-AS2 correct=False gen=691 prompt_n=57 pp=32.7 t/s tg=19.7 t/s 37s
+[16/18] cal-48k-00-L3 correct=False gen=320 prompt_n=67 pp=36.7 t/s tg=19.7 t/s 18s
+[17/18] cal-48k-00-M24 correct=False gen=987 prompt_n=55 pp=33.8 t/s tg=19.7 t/s 52s
+[18/18] cal-48k-00-AC5 correct=False gen=1437 prompt_n=55 pp=33.9 t/s tg=19.6 t/s 75s
+=== gemma4 B 16k,48k 2026-10-25T01:17:21Z
+gemma4 B calibration/calibration: 12 questions, 0 already done
+[1/12] cal-16k-00-R0 correct=False gen=178 prompt_n=20067 pp=180.6 t/s tg=17.0 t/s 122s
+[2/12] cal-16k-00-M31 correct=True gen=297 prompt_n=62 pp=68.8 t/s tg=16.9 t/s 18s
+[3/12] cal-16k-00-AS2 correct=True gen=515 prompt_n=56 pp=69.7 t/s tg=16.8 t/s 31s
+[4/12] cal-16k-00-L3 correct=True gen=477 prompt_n=67 pp=72.5 t/s tg=16.8 t/s 29s
+[5/12] cal-16k-00-M24 correct=False gen=229 prompt_n=55 pp=65.0 t/s tg=17.0 t/s 14s
+[6/12] cal-16k-00-AC5 correct=False gen=869 prompt_n=55 pp=65.4 t/s tg=16.8 t/s 52s
+[7/12] cal-48k-00-R0 correct=False gen=200 prompt_n=61384 pp=82.1 t/s tg=10.3 t/s 768s
+[8/12] cal-48k-00-M31 correct=False gen=387 prompt_n=62 pp=32.2 t/s tg=10.2 t/s 40s
+[9/12] cal-48k-00-AS2 correct=False gen=775 prompt_n=57 pp=32.8 t/s tg=10.2 t/s 78s
+[10/12] cal-48k-00-L3 correct=False gen=362 prompt_n=67 pp=34.9 t/s tg=10.2 t/s 37s
+[11/12] cal-48k-00-M24 correct=False gen=4096 prompt_n=55 pp=31.8 t/s tg=10.1 t/s 408s TRUNCATED
+[12/12] cal-48k-00-AC5 correct=False gen=4096 prompt_n=55 pp=28.2 t/s tg=10.1 t/s 407s TRUNCATED
+=== done 2026-10-25T01:50:59Z

@@ -1,0 +1,15 @@
+10-25 07:24 start main A (try 1) docs=4 
+10-25 11:01 done main A
+10-25 11:01 start main B (try 1) docs=4 
+10-25 14:37 done main B
+10-25 14:37 start main C (try 1) docs=4 
+10-26 01:54 done main C
+10-26 01:54 start main D (try 1) docs=4 
+10-26 13:34 done main D
+10-26 13:34 start noise A (try 1) docs=4 
+10-26 14:31 done noise A
+10-26 14:31 start main A (try 1) docs=4 
+10-26 16:09 done main A
+10-26 16:09 start main B (try 1) docs=4 
+10-26 18:12 done main B
+10-26 18:12 ALL DONE - reports in results/report_glimmer.txt and results/report_gemma4.txt

@@ -1,0 +1,57 @@
+
+# 2026-10-25 01:16:35
+# /opt/homebrew/bin/llama-server -m /Users/admin/models/Muse-Glimmer-30B-KQuant-17GB-Q4_K_M.gguf --host 127.0.0.1 --port 8793 -ngl 99 -fa on -c 65536 -np 1 -b 2048 -ub 512 --jinja -ctk f16 -ctv f16
+0.00.218.357 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.220.688 W srv  llama_server: -----------------
+0.00.220.691 W srv  llama_server: CORS is set to allow all origins ('*') and no API key is set
+0.00.220.691 W srv  llama_server: this can be a security risk (cross-origin attacks)
+0.00.220.691 W srv  llama_server: more info: https://github.com/ggml-org/llama.cpp/pull/25655
+0.00.220.691 W srv  llama_server: -----------------
+0.00.223.517 I srv    load_model: loading model '/Users/admin/models/Muse-Glimmer-30B-KQuant-17GB-Q4_K_M.gguf'
+0.01.083.868 W load: setting token '<|message|>' (200023) attribute to USER_DEFINED (16), old attributes: 8
+0.01.084.647 W load: setting token '<|start|>' (200022) attribute to USER_DEFINED (16), old attributes: 8
+0.01.087.817 W load: special_eot_id is not in special_eog_ids - the tokenizer config may be incorrect
+0.25.624.567 I cmn          init: llama threadpool init, n_threads = 8
+0.26.541.720 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 65536, kv_unified = 'false'
+0.26.554.291 W srv          init: chat template supports preserving reasoning, it is enabled by default (may use more tokens, disable via --no-reasoning-preserve)
+0.26.554.307 I srv  llama_server: model loaded
+0.26.554.313 I srv  llama_server: listening on http://127.0.0.1:8793
+0.34.025.805 I srv    operator(): operator(): cleaning up before exit...
+
+# 2026-10-25 01:19:29
+# /opt/homebrew/bin/llama-server -m /Users/admin/models/Muse-Glimmer-30B-KQuant-17GB-Q4_K_M.gguf --host 127.0.0.1 --port 8793 -ngl 99 -fa on -c 65536 -np 1 -b 2048 -ub 512 --jinja -ctk f16 -ctv f16
+0.00.303.069 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.304.883 W srv  llama_server: -----------------
+0.00.304.886 W srv  llama_server: CORS is set to allow all origins ('*') and no API key is set
+0.00.304.886 W srv  llama_server: this can be a security risk (cross-origin attacks)
+0.00.304.886 W srv  llama_server: more info: https://github.com/ggml-org/llama.cpp/pull/25655
+0.00.304.886 W srv  llama_server: -----------------
+0.00.307.231 I srv    load_model: loading model '/Users/admin/models/Muse-Glimmer-30B-KQuant-17GB-Q4_K_M.gguf'
+0.01.128.877 W load: setting token '<|message|>' (200023) attribute to USER_DEFINED (16), old attributes: 8
+0.01.129.469 W load: setting token '<|start|>' (200022) attribute to USER_DEFINED (16), old attributes: 8
+0.01.131.340 W load: special_eot_id is not in special_eog_ids - the tokenizer config may be incorrect
+0.13.477.135 I cmn          init: llama threadpool init, n_threads = 8
+0.14.275.534 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 65536, kv_unified = 'false'
+0.14.287.645 W srv          init: chat template supports preserving reasoning, it is enabled by default (may use more tokens, disable via --no-reasoning-preserve)
+0.14.287.661 I srv  llama_server: model loaded
+0.14.287.673 I srv  llama_server: listening on http://127.0.0.1:8793
+0.20.276.720 I srv    operator(): operator(): cleaning up before exit...
+
+# 2026-10-25 01:19:54
+# /opt/homebrew/bin/llama-server -m /Users/admin/models/Muse-Glimmer-30B-KQuant-17GB-Q4_K_M.gguf --host 127.0.0.1 --port 8793 -ngl 99 -fa on -c 65536 -np 1 -b 2048 -ub 512 --jinja -ctk f16 -ctv f16
+0.00.335.992 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.336.617 W srv  llama_server: -----------------
+0.00.336.619 W srv  llama_server: CORS is set to allow all origins ('*') and no API key is set
+0.00.336.619 W srv  llama_server: this can be a security risk (cross-origin attacks)
+0.00.336.619 W srv  llama_server: more info: https://github.com/ggml-org/llama.cpp/pull/25655
+0.00.336.619 W srv  llama_server: -----------------
+0.00.338.025 I srv    load_model: loading model '/Users/admin/models/Muse-Glimmer-30B-KQuant-17GB-Q4_K_M.gguf'
+0.01.155.211 W load: setting token '<|message|>' (200023) attribute to USER_DEFINED (16), old attributes: 8
+0.01.155.869 W load: setting token '<|start|>' (200022) attribute to USER_DEFINED (16), old attributes: 8
+0.01.158.130 W load: special_eot_id is not in special_eog_ids - the tokenizer config may be incorrect
+0.06.610.506 I cmn          init: llama threadpool init, n_threads = 8
+0.07.381.434 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 65536, kv_unified = 'false'
+0.07.388.346 W srv          init: chat template supports preserving reasoning, it is enabled by default (may use more tokens, disable via --no-reasoning-preserve)
+0.07.388.366 I srv  llama_server: model loaded
+0.07.388.375 I srv  llama_server: listening on http://127.0.0.1:8793
+0.14.337.469 I srv    operator(): operator(): cleaning up before exit...
