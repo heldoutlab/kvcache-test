@@ -13,7 +13,7 @@ Pre-registered test by [Held Out Lab](https://heldoutlab.substack.com): independ
 - **Muse Glimmer 30B: q8_0 — no loss found.** 83 vs 81 of 96 questions correct (q8_0 vs f16); identical answers at 4k and 16k. Generation 2–6% slower.
 - **Gemma 4 26B-A4B: q8_0 — not resolved.** 63 vs 66 of 96 (gap at 16k). Generation 29–47% slower with q8_0.
 - **"Quantize V, not K": no difference found.** q8 K / q4 V and q4 K / q8 V both 82 of 96 on Glimmer. On Apple Metal, both mixed settings ran flash attention on the CPU: prompt reading about 4x slower at 48k.
-- **Prediction:** not proved wrong by its pre-registered thresholds, but mostly off (details in the write-up).
+- **Prediction:** not proved wrong by its pre-registered thresholds, but mostly off (details in the [write-up](https://heldoutlab.substack.com/p/i-tested-the-q8_0-kv-cache-is-free)).
 
 Reports: [`results/report_glimmer.txt`](results/report_glimmer.txt), [`results/report_gemma4.txt`](results/report_gemma4.txt) (and `report.json` per model). Re-run the analysis with `python3 harness/analyze.py`.
 
