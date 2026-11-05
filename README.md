@@ -2,6 +2,8 @@
 
 Pre-registered test by [Held Out Lab](https://heldoutlab.substack.com): independent tests of AI model claims, with the rules fixed before the run.
 
+**Write-up with charts:** [I tested the "q8_0 KV cache is free" tip](https://heldoutlab.substack.com/p/i-tested-the-q8_0-kv-cache-is-free) · [Subscribe](https://heldoutlab.substack.com/subscribe) to get the next test (LFM3-1.7B, Liquid's claim on my agent benchmark).
+
 **Status: complete (main run 2026-10-25/26).** [`PREREG.md`](PREREG.md) holds the claim, the pass/fail rule, the author's prediction (pushed before any model ran), the pilot log and the sha256 of every task and harness file. Public tasks are in `tasks/`, the harness in `harness/`, every raw output and server log in `results/`. The private held-out set is not published; only its hash is.
 
 - **Claim:** "q8_0 KV cache is free; if you must go lower, quantize V to q4_0 but leave K alone."
